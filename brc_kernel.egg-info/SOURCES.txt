@@ -1,0 +1,7 @@
+README.md
+pyproject.toml
+brc/__init__.py
+brc_kernel.egg-info/PKG-INFO
+brc_kernel.egg-info/SOURCES.txt
+brc_kernel.egg-info/dependency_links.txt
+brc_kernel.egg-info/top_level.txt

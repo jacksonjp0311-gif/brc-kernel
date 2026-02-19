@@ -1,3 +1,11 @@
+Metadata-Version: 2.4
+Name: brc-kernel
+Version: 0.1.0
+Summary: Bounded Recursive Coherence kernel
+Author: James Paul Jackson
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+
 ﻿
 # BRC Kernel — Bounded Recursive Coherence
 
