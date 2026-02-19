@@ -14,3 +14,4 @@ def append_ledger(path: str, entry: Dict[str, Any]) -> None:
     Backward-compatible alias.
     """
     append_jsonl(path, entry)
+

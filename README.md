@@ -345,7 +345,7 @@ All domain logic should live in plugins.
 
 ---
 
-# 🔒 v1.0 Release Status
+# 🔒 v1.0-RC1 Release Status
 
 BRC kernel is now:
 
@@ -362,3 +362,8 @@ Core guarantees:
 - public verification test
 
 This repository is entering release-candidate phase.
+
+Added in RC1:
+- multi-seed reproducibility harness
+- benchmark artifact export layer
+

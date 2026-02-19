@@ -1,34 +1,40 @@
-﻿from __future__ import annotations
-import hashlib
-import os
 import json
-from typing import Tuple
-
-def _sha256_hex(s: str) -> str:
-    return hashlib.sha256(s.encode("utf-8")).hexdigest()
+import os
+import hashlib
 
 def compute_chain_hash(path: str) -> str:
-    h = ""
+    chain = ""
     if not os.path.exists(path):
         return ""
 
     with open(path, "r", encoding="utf-8") as f:
         for line in f:
-            line = line.strip()
-            if not line:
+            if not line.strip():
                 continue
+
             obj = json.loads(line)
+            prev = chain
+
+            obj.pop("timestamp", None)
             obj.pop("chain", None)
-            payload = json.dumps(obj, sort_keys=True)
-            h = _sha256_hex(h + payload)
 
-    return h
+            if "run_ID" in obj and "run_id" not in obj:
+                obj["run_id"] = obj.pop("run_ID")
 
-def verify_chain_hash(jsonl: str, hash_path: str) -> Tuple[bool, str, str]:
+            obj["prev_chain"] = prev
+            obj["ledger_version"] = int(obj.get("ledger_version", 1))
+
+            payload = json.dumps(obj, sort_keys=True, separators=(",", ":"))
+            chain = hashlib.sha256((prev + payload).encode("utf-8")).hexdigest()
+
+    return chain
+
+
+def verify_chain_hash(ledger_path: str, hash_path: str):
     expected = ""
     if os.path.exists(hash_path):
         with open(hash_path, "r", encoding="utf-8") as f:
             expected = f.read().strip()
 
-    actual = compute_chain_hash(jsonl)
-    return (actual == expected), actual, expected
+    actual = compute_chain_hash(ledger_path)
+    return actual == expected, actual, expected

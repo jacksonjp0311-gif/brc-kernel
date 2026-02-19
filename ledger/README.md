@@ -15,3 +15,12 @@ Append-only decision history. Source of truth for run provenance.
 - Never rewrite ledger lines
 - If you need compaction, write a separate tool
 
+
+## Relationship to benchmarks/
+
+ledger/ is the canonical source of truth.
+
+benchmarks/ contains exported copies for public verification.
+
+Do not edit ledger entries.
+If you need summaries, write them into benchmarks/.
