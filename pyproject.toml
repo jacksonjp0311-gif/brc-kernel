@@ -1,0 +1,15 @@
+﻿[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "brc-kernel"
+version = "0.1.0"
+description = "Bounded Recursive Coherence stability kernel for recursive systems"
+authors = [{name="James Paul Jackson"}]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["."]
