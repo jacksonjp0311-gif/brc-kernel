@@ -334,3 +334,23 @@ brc-run --root . --steps 20
 BRC is a minimal deterministic core shared across recursive systems.
 All domain logic should live in plugins.
 
+
+---
+
+# 🔒 v1.0 Release Status
+
+BRC kernel is now:
+
+- deterministic
+- ledger verified
+- plugin-ready
+- reproducible
+
+Core guarantees:
+- distance-only metric contract
+- kernel computes R/Delta/S
+- append-only ledger
+- rolling chain hash
+- public verification test
+
+This repository is entering release-candidate phase.
