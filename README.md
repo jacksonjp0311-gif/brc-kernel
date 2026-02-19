@@ -77,33 +77,41 @@ This ordering is intentional: **do not bypass orchestrator order** if you want d
 
 ## Repository layout (canonical)
 
-### Top-level structure
+### Structure
 
 ```
-.
-├── brc/                 # Python package (kernel + plugins + orchestrator)
-├── docs/                # Theory + architecture (LaTeX)
-├── config/              # Runtime thresholds
-├── state/               # Run/baseline storage
-├── ledger/              # Append-only run log (source of truth)
-├── artifacts/           # Derived outputs (reports/manifests/hashes)
-├── .gitignore
-└── README.md
+BRC/
+│
+├─ brc/                      # Python package (the actual kernel)
+│  ├─ kernel/                # R / Delta / S computation + gating
+│  ├─ ledger/                # append + verify helpers
+│  ├─ monitoring/            # EVENT emission surface
+│  ├─ orchestrator/          # canonical run loop + CLI
+│  ├─ plugins/               # genome / metric / proposer interfaces
+│  └─ interventions/         # freeze / refine / rollback hooks
+│
+├─ ledger/                   # append-only run history (SOURCE OF TRUTH)
+│  ├─ runs/                  # per-run ledgers + hashes
+│  ├─ latest.jsonl           # latest run chain
+│  └─ latest.hash            # chain verification hash
+│
+├─ benchmarks/               # public reproducibility proof
+│  ├─ runs/                  # exported run ledgers
+│  └─ results/               # summarized verification outputs
+│
+├─ tests/                    # deterministic verification tests
+│  └─ public_test.py
+│
+├─ artifacts/                # derived manifests / reports (not canonical)
+├─ docs/                     # LaTeX theory + architecture
+├─ config/                   # runtime thresholds
+├─ state/                    # baselines + snapshots
+│
+├─ pyproject.toml            # packaging config
+├─ LICENSE
+└─ README.md
+ 
 ```
-
-### Package structure (`brc/`)
-
-```
-brc/
-├── __init__.py
-├── kernel/              # Stability + gate
-├── plugins/             # Genome + metrics + proposers
-├── orchestrator/        # Canonical run loop + CLI
-├── ledger/              # Append + verify helpers
-├── monitoring/          # Truth-only event emission
-└── interventions/       # Optional actions (freeze/refine/rollback)
-```
-
 ---
 
 ## Mini-README contract system (important)
