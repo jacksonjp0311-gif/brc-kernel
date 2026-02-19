@@ -1,15 +1,15 @@
-﻿class JaccardEdges:
-    def compute(self, prev, cand, base):
-        a = set(prev.edges)
-        b = set(cand.edges)
+﻿from __future__ import annotations
 
-        if not a and not b:
-            d = 0
-        else:
-            d = 1 - len(a & b) / max(1, len(a | b))
+class JaccardEdges:
+    """
+    Distance-only metric (normalized to [0,1]).
+    """
 
-        R = 1 - d
-        Delta = d
-        S = R - Delta
+    def distance(self, a, b) -> float:
+        A = set(getattr(a, "edges", []))
+        B = set(getattr(b, "edges", []))
 
-        return {"R": R, "Delta": Delta, "S": S}
+        if not A and not B:
+            return 0.0
+
+        return 1.0 - (len(A & B) / max(1, len(A | B)))

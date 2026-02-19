@@ -1,10 +1,16 @@
-[build-system]
+﻿[build-system]
 requires = ["setuptools>=65", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "brc-kernel"
-version = "0.1.0"
+
+      param($m)
+      $maj = [int]$m.Groups[1].Value
+      $min = [int]$m.Groups[2].Value
+      $pat = [int]$m.Groups[3].Value + 1
+      "version = `"$maj.$min.$pat`""
+    
 description = "Bounded Recursive Coherence kernel"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -13,3 +19,7 @@ dependencies = []
 
 [tool.setuptools]
 packages = ["brc"]
+
+[project.scripts]
+brc-run = "brc.orchestrator.cli:main"
+
