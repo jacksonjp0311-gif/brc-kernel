@@ -1,0 +1,24 @@
+﻿\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,geometry}
+\geometry{margin=1in}
+
+\title{BRC Architecture v1.0}
+\author{James Paul Jackson}
+\date{2026}
+
+\begin{document}
+\maketitle
+
+\section{Kernel}
+Compute $R,\Delta,S$ and gate mutations.
+
+\section{Ledger}
+Append-only ledger with rolling hash.
+
+\section{Plugins}
+Genome extractor, metric, proposer.
+
+\section{Orchestrator}
+Propose → measure → gate → ledger → emit.
+
+\end{document}

@@ -1,0 +1,56 @@
+﻿\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,geometry,booktabs}
+\usepackage{hyperref}
+\geometry{margin=1in}
+
+\title{\textbf{Codex ΔΦ — Bounded Recursive Coherence (BRC v1.6)}}
+\author{\textbf{James Paul Jackson}}
+\date{February 2026}
+
+\begin{document}
+\maketitle
+
+\section{Scope}
+BRC v1.6 formalizes a stability-first class of recursively evolving graph-genome systems.
+
+\section{State Space}
+Let $G_k=(V_k,E_k)$ be a directed graph.
+
+Genome:
+\[
+\Gamma_k=\Gamma(G_k)
+\]
+
+Metric:
+\[
+d_\Gamma=\beta_1 d_{topo}+\beta_2 d_{dep}
+\]
+
+Retention:
+\[
+R_k=1-d_\Gamma(\Gamma_k,\Gamma_0)
+\]
+
+Drift:
+\[
+\Delta_k=d_\Gamma(\Gamma_k,\Gamma_{k-1})
+\]
+
+\section{Stability}
+\[
+S_k=R_k-\Delta_k
+\]
+
+\section{Gate}
+Accept if $\Delta S_k\ge0$  
+Relaxed: $\ge-\epsilon$
+
+\section{Contractive}
+\[
+Lip(T)\le\alpha<1
+\]
+
+\section{Convergence}
+If contractive then $\Gamma_k\to\Gamma^*$.
+
+\end{document}

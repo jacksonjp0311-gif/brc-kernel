@@ -1,0 +1,1 @@
+﻿def rollback(): print('ROLLBACK')
