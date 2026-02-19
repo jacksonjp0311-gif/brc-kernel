@@ -1,0 +1,10 @@
+{
+  "created_utc": "2026-02-19T14:52:22.804626+00:00",
+  "final_S": 1.0,
+  "hash_path": "./ledger/runs/20260219T145222Z_seed42.hash",
+  "ledger_chain_hash": "512d2e0cd465218e23ba0a530d53f97e6629040af0ad830e94ce4a4b7a43b4a8",
+  "ledger_path": "./ledger/runs/20260219T145222Z_seed42.jsonl",
+  "run_id": "20260219T145222Z_seed42",
+  "seed": 42,
+  "steps": 12
+}
